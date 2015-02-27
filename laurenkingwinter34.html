@@ -57,7 +57,7 @@
             $("#allsensors").toggleClass('hidden');
         });
         //var socket = io.connect('http://10.48.102.xxx:3001'); //change this to match your robot
-        var socket = io.connect('http://10.48.102.110:3001'); //change this to match your robot
+        var socket = io.connect('http://10.48.102.111:3001'); //change this to match your robot
         batterycapacity(socket);
         leftsignal(socket);
         front_leftsignal(socket);
@@ -75,6 +75,7 @@
             $("#batCapPer").text((batCapPer * 100).toFixed(2));
              var power = data.battery.voltage.volts * data.battery.current.amps;
             $("#power").text(power.toFixed(2));
+            $('#amps').text(data.battery.current.amps.toFixed(2));
 
 
             $(".left_signal").css("opacity", sensop(data.cliff_sensors.left.signal.magnitude));
@@ -287,16 +288,16 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-3 left_signal darkness">
-                left
+                
             </div>
             <div class="col-xs-3 front_left_signal darkness">
-                front_left
+                
             </div>
             <div class="col-xs-3 front_right_signal darkness">
-                front_right
+                
             </div>
             <div class="col-xs-3 left_signal darkness">
-                right
+                
             </div>
 
 
@@ -315,16 +316,20 @@
                 <div id="countup" class="sensor-value">0</div>
             </div>
             <div class="col-xs-2 sensor-block">
-                <div class="sensor-title">Temperature</div>
-                <div id="tempF" class="sensor-value">0</div>
-            </div>
-            <div class="col-xs-2 sensor-block">
                 <div class="sensor-title">Capacity %</div>
                 <div id="batCapPer" class="sensor-value">0</div>
             </div>
             <div class="col-xs-2 sensor-block">
                 <div class="sensor-title">Power</div>
                 <div id="power" class="sensor-value">0</div>
+            </div>
+            <div class="col-xs-2 sensor-block">
+                <div class="sensor-title">Current</div>
+                <div id="amps" class="sensor-value">0</div>
+            </div>
+            <div class="col-xs-12 sensor-block">
+                <div class="sensor-title">Temperature</div>
+                <div id="tempF" class="sensor-value">0</div>
             </div>
         </div>
 
